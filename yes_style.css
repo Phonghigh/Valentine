@@ -6,19 +6,35 @@ body {
     margin: 0;
     background-color: #f9e3e3;
     font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 10px;
 }
 
 .container {
-    text-align: center;
+    width: 90%;
+    max-width: 500px;
 }
 
 .header_text {
-    font-size: 3em;
+    font-size: 2.5em;
     color: #d32f2f;
 }
 
+/* Đảm bảo ảnh không bị tràn trên mobile */
 .gif_container img {
     width: 100%; 
-    max-width: 500px; 
-    height: auto; 
+    max-width: 400px; 
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .header_text {
+        font-size: 2em;
+    }
+
+    .gif_container img {
+        max-width: 300px; 
+    }
 }
