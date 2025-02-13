@@ -8,10 +8,22 @@
 </head>
 <body>
     <div class="container">
+        <audio id="valentineMusic" autoplay>
+            <source src="Valentine_new/media/music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var audio = document.getElementById("valentineMusic");
+                audio.play().catch(error => console.log("Tự động phát bị chặn, yêu cầu tương tác người dùng"));
+            });
+        </script>
         <h1 class="header_text">Biết Trúc Trúc sẽ đồng ý màaaaaa!</h1>
         <div class="gif_container">
             <img src="https://media.tenor.com/_VSIUHJ98owAAAAM/kiss-love.gif">
         </div>
+
     </div>
 </body>
 </html>
