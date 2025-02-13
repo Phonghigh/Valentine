@@ -61,6 +61,10 @@ h1 {
       font-size: 1em;
   }
 
+  .gif_container img {
+    max-width: 200px;
+  }
+
   .yes-button, .no-button {
       font-size: 1em;
       padding: 10px;
