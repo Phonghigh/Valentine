@@ -58,7 +58,7 @@ h1 {
 /* Responsive Design */
 @media (max-width: 480px) {
   h1 {
-      font-size: 1.8em;
+      font-size: 1em;
   }
 
   .yes-button, .no-button {
