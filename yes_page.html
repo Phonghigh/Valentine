@@ -14,9 +14,16 @@
         </audio>
     
         <script>
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+    
             document.addEventListener("DOMContentLoaded", function () {
-                var audio = document.getElementById("valentineMusic");
-                audio.play().catch(error => console.log("Tự động phát bị chặn, yêu cầu tương tác người dùng"));
+                if (getQueryParam("playMusic") === "true") {
+                    var audio = document.getElementById("valentineMusic");
+                    audio.play().catch(error => console.log("Tự động phát bị chặn, yêu cầu tương tác người dùng"));
+                }
             });
         </script>
         <h1 class="header_text">Biết Trúc Trúc sẽ đồng ý màaaaaa!</h1>
