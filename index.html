@@ -7,16 +7,70 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>14/2 này Trúc Trúc đi chơi ngheeee?</h1>
+    <div class="container" id="mainContent">
+        <div class="question_container"><h1 id="questionText">14/2 này Trúc Trúc đi chơi ngheeee?</h1></div>
         <div class="buttons">
             <button class="yes-button" onclick="handleYesClick()">Yes</button>
             <button class="no-button" onclick="handleNoClick()">No</button>
         </div>
-        <div class="gif_container">
-            <img src="media/mew.gif" alt="Cute GIF">
+        <div class="gif_container" id="gifContainer_first">
+            <img src="media/mew.gif" alt="">
         </div>
+        <div class="gif_container" id="gifContainer" style="display: none">
+            <img src="media/kiss-love.gif" alt="Cute GIF">
+        </div>
+        <audio id="valentineMusic">
+            <source src="media/music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const messages = [
+            "Chắc chưa?",
+            "Thật luôn :((",
+            "Hông đùa mà đúng hôg?",
+            "Hoooooi màaaaaaa",
+            "Suy nghĩ lại ikkkkkkk!",
+            "Trúc Trúc hoogn đi, Fog buồn đó T-T",
+            "Buồn luônnnnn...",
+            "Rất rất buồn luônnnnn...",
+            "Ok fine, Kìn chán nà...",
+            "Giỡn hoiffoiiiii, đồng ý chứ gìiiiii! ❤️"
+        ];
+        let messageIndex = 0;
+
+        function handleNoClick() {
+            const noButton = document.querySelector('.no-button');
+            const yesButton = document.querySelector('.yes-button');
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${currentSize * 1.5}px`;
+        }
+
+        function handleYesClick() {
+
+            document.getElementById("questionText").textContent = "Biết Trúc Trúc sẽ đồng ý màaaaaa!";
+            document.querySelector(".buttons").style.display = "none"; // Ẩn nút Yes/No
+            document.getElementById("gifContainer").style.display ="flex"; // Hiện GIF
+            document.getElementById("gifContainer_first").style.display = "none"; // Hiện GIF
+            // Phát nhạc
+            const audio = document.getElementById("valentineMusic");
+            audio.play().catch(error => {
+                console.log("Tự động phát bị chặn, yêu cầu tương tác người dùng.");
+                let button = document.createElement("button");
+                button.innerText = "Bật nhạc 🎵";
+                button.style.fontSize = "20px";
+                button.style.padding = "10px";
+                button.style.marginTop = "20px";
+                button.onclick = function () {
+                    audio.play();
+                    button.remove();
+                };
+                document.body.appendChild(button);
+            });
+        }
+    </script>
 </body>
 </html>
