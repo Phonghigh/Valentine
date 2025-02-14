@@ -9,32 +9,48 @@
 <body>
     <div class="container">
         <div class="gif_container">
-            <img src="./media/kiss-love.gif">
+            <img id="gifImage" style="visibility: hidden;">
         </div>
-        <audio id="valentineMusic" autoplay>
+        <audio id="valentineMusic">
             <source src="./media/music.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
-        <audio>
-            <source src="./media/music.mp3" type="audio/mpeg">
-        </audio>
+        <h1 class="header_text">Biết Trúc Trúc sẽ đồng ý màaaaaa!</h1>
+
         <script>
             function getQueryParam(param) {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get(param);
             }
-    
+
             document.addEventListener("DOMContentLoaded", function () {
-                if (getQueryParam("playMusic") === "true") {
-                    var audio = document.getElementById("valentineMusic");
-                    audio.play().catch(error => console.log("Tự động phát bị chặn, yêu cầu tương tác người dùng"));
-                }
+                var audio = document.getElementById("valentineMusic");
+                var gif = document.getElementById("gifImage");
+
+                // Cố gắng phát nhạc trước, sau đó hiển thị GIF
+                audio.play().then(() => {
+                    gif.src = "./media/kiss-love.gif"; 
+                    gif.style.visibility = "visible";
+                }).catch(error => {
+                    console.log("Tự động phát bị chặn, yêu cầu tương tác người dùng.");
+
+                    // Hiển thị nút yêu cầu người dùng bật nhạc
+                    let button = document.createElement("button");
+                    button.innerText = "Bật nhạc 🎵";
+                    button.style.fontSize = "20px";
+                    button.style.padding = "10px";
+                    button.style.marginTop = "20px";
+                    button.onclick = function () {
+                        audio.play();
+                        gif.src = "./media/kiss-love.gif"; 
+                        gif.style.visibility = "visible";
+                        button.remove();
+                    };
+                    document.body.appendChild(button);
+                });
             });
         </script>
-        <h1 class="header_text">Biết Trúc Trúc sẽ đồng ý màaaaaa!</h1>
-        
-
     </div>
 </body>
 </html>
