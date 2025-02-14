@@ -54,6 +54,10 @@ h1 {
   color: white;
 }
 
+.gif_container{
+  margin: 0 auto;
+}
+
 .gif_container img {
   text-align: center;
   max-width: 400px;
@@ -71,6 +75,8 @@ h1 {
 
   .gif_container img {
     max-width: 200px;
+    display: block;
+    margin: 0 auto;
   }
 
   .yes-button, .no-button {
